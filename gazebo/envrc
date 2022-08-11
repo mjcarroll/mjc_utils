@@ -1,0 +1,2 @@
+export COLCON_DEFAULTS_FILE=`pwd`/default.yaml 
+export IGNITION_VERSION=garden

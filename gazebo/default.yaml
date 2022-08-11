@@ -1,0 +1,33 @@
+{
+  "build": {
+    "merge-install": true,
+    "cmake-args": [
+      # Change generator to ninja
+      "-GNinja", 
+      "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+      # Skip noisy/slow/broken things
+      "-DBUILD_DOCS=OFF",
+      "-DSKIP_SWIG:BOOL=ON",
+      "-DSKIP_PYBIND11:BOOL=ON",
+      "-DSKIP_optix=ON",
+      "-DSKIP_usd=ON",
+      "-DSKIP_DEPRECATED=ON",
+      "-DSKIP_DEPRECATED_TESTS=ON",
+      # Use clang for warnings
+      "-DCMAKE_C_COMPILER=clang-14",
+      "-DCMAKE_CXX_COMPILER=clang++-14",
+      # Use ccache for speed
+      "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+      "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
+      # Use buildcache for speed
+      #"-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+      #"-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
+      "--no-warn-unused-cli",
+      # Make ide completions work
+      "-DCMAKE_EXPORT_COMPILE_COMMANDS=1",
+    ]
+  },
+  "test": {
+    "merge-install": true
+  },
+}
